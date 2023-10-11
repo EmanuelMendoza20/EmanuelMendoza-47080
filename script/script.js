@@ -1,65 +1,86 @@
-//Simulador de peso en otro mundos
+//Creacion de clase astro
+class Astro {
+    constructor(nombre, gravedadRelativa) {
+        this.nombre = nombre;
+        this.gravedadRelativa = gravedadRelativa;
+    }
+}
+
+//Instancias de Astro en un array
+const astros = [
+    new Astro("Luna", 1.622),
+    new Astro("Marte", 3.711),
+    new Astro("Sol", 274)
+];
+
+//Funcion para calcular el peso del usuario en el astro
+function calcularPesoEnAstro(astro, kilosUsuario) {
+    return ((kilosUsuario / 9.8) * astro.gravedadRelativa).toFixed(2);
+}
+
+//Funcion para buscar un astro por nombre
+function buscarAstroPorNombre(nombre){
+    return astros.find(astro => astro.nombre.toLowerCase() === nombre.toLowerCase())
+}
+
+alert("¡Bienvenido a PlanetGravity! 🚀\nSomos tu simulador de peso en otros mundos. ¿Preparado para saber cuanto pesarías en la Luna, Marte o en el Sol?")
 
 while(true){
-    alert("¡Bienvenido a PlanetGravity! 🚀\nSomos tu simulador de peso en otros mundos. ¿Preparado para saber cuanto pesarías en la Luna, Marte o en el Sol?")
 
-    let pesoUsuario;
+// Defino la variable que almacenará el peso de mi usuario
+let pesoUsuario = 0;
+let astroElegido;
 
-    do{
-        pesoUsuario = prompt("¡Genial! 🪐\nPrimero lo primero, ingresa tu peso en kg. Prometemos mantener tu información en secreto 🤫.");
+do {
+    pesoUsuario = Number(prompt("¡Genial! 🪐\nPrimero lo primero, ingresa tu peso en kg. Prometemos mantener tu información en secreto 🤫."));
 
-        if(pesoUsuario === null){
-            alert("Acabas de cancelar la operación. 🔭");
-            break;
-        };
+    if (isNaN(pesoUsuario)) {
+        alert("Ese no es un peso válido. Inténtalo de nuevo 😪.");
+    }
+    
+} while (isNaN(pesoUsuario)); //Creo un bucle do...while para asegurarme de que mi usuario coloque un dato correcto.
 
-        pesoUsuario = Number(pesoUsuario);
+let mensajeResultado;
+let simulador;
 
-        if(isNaN(pesoUsuario) || pesoUsuario <= 0){
-            alert("Ouch, probemos otra vez. Tienes que ingresar un peso válido y mayor que cero.");
-        } else{
-            let calcularPeso = prompt(`Bien, ya tenemos tu peso 📔.
+do{
 
-    Ahora vamos a elegir el mundo:
-    🔹Escribe 1 para calcular tu peso en la Luna
-    🔹Escribe 2 para calcular tu peso en Marte
-    🔹Presiona 3 para calcular tu peso en el Sol`);
+    simulador = prompt(`Bien, ya tenemos tu peso 📝.
 
-            switch(calcularPeso){
-                case "1":
-                    pesoCalculado = ((pesoUsuario/9.8) * 1.622).toFixed(2);
-                    alert(`¡Todo listo! 🚀
-                    
-La gravedad en la Luna es aproximadamente el 16.6% de la gravedad de la Tierra. Esto significa que si tu peso en la Tierra es de ${pesoUsuario} kg, tu peso en la Luna sería de aproximadamente ${pesoCalculado} kg.`);
-                    break;
-                case "2":
-                    pesoCalculado = ((pesoUsuario/9.8) * 3.711).toFixed(2);
-                    alert(`¡Todo listo! 🚀
-                
-La gravedad en Marte es aproximadamente el 38% de la gravedad de la Tierra. Esto significa que si tu peso en la Tierra es de ${pesoUsuario} kg, tu peso en Marte sería de aproximadamente ${pesoCalculado} kg.`);
-                    break;
-                case "3":
-                    pesoCalculado = ((pesoUsuario/9.8) * 274).toFixed(2);
-                    alert(`¡Todo listo! 🚀
-                                    
-La gravedad en el Sol es aproximadamente el 274% de la gravedad de la Tierra. Esto significa que si tu peso en la Tierra es de ${pesoUsuario} kg, tu peso en el Sol sería de aproximadamente ${pesoCalculado} kg.`);
-                    break;
-                default:
-                    alert("No existe esa opción. Ingresa un opción válida 🔭.");
-            }
-        }
+Ahora vamos a elegir el mundo:
+🔹Escribe Luna para calcular tu peso en la Luna
+🔹Escribe Marte para calcular tu peso en Marte
+🔹Escribe Sol para calcular tu peso en el Sol`);
 
-    } while(pesoUsuario == null);
+let astroElegido = buscarAstroPorNombre(simulador.toLocaleLowerCase());
 
-        let volverACalcular = confirm("¿Quieres volver a calcular tu peso en otro mundo? 🚀")
+if(astroElegido){
+    mensajeResultado = `Haciendo calculos 🧮
+...
+...
+...
 
-        if(!volverACalcular){
-            alert(`Cerrando PlanetGravity 🚀
+La gravedad en ${astroElegido.nombre} es aproximadamente el ${astroElegido.gravedadRelativa}% de la gravedad de la Tierra. 
+Esto significa que si tu peso en la Tierra es de ${pesoUsuario} kg, tu peso en ${astroElegido.nombre} sería de aproximadamente ¡${calcularPesoEnAstro(astroElegido, pesoUsuario)} kg! Increíble, ¿verdad? 😮`;
+    alert(mensajeResultado);
+    break;
+}else{
+    alert("No encontramos un astro con ese nombre 🤔.\nIntenta de nuevo, por favor.");
+}
+
+} while(!astroElegido)
+
+let volverACalcular = confirm("¿Quieres volver a calcular tu peso en otro mundo? 🚀")
+
+if(!volverACalcular){
+    alert(`Cerrando PlanetGravity 🚀
 ...
 ...             
 ...
 
-See you later!`)
-            break;
-        }
+See you later!`);
+    break;
 }
+}
+
+
