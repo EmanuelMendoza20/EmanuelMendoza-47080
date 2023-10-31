@@ -1,0 +1,175 @@
+/* Estilo para el cuerpo de la página */
+
+/* Importando fuente */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    min-height: 100vh; /* Toma el 100% de la altura de la ventana */
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-color: #13161C;
+}
+
+.logo img{
+    width: 380px;
+}
+
+/* Estilo para el encabezado */
+h2 {
+    text-align: center;
+    color: white;
+    font-size: 28px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+/* Estilo para el párrafo de bienvenida */
+p {
+    text-align: center;
+    color: #d4d4d4;
+    width: 50%;
+    font-size: 20px;
+}
+
+p.subtexto{
+    width: 38%;
+}
+
+#parrafo-resultado{
+    font-weight: 600;
+    padding-bottom: 0px;
+    margin: 0px;
+}
+
+#pesoUsuario{
+    background-color: #2D323A;
+    color: white;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+/* Estilo para el contenedor de entrada */
+#input-section {
+    background-color: #272b33;
+    border-radius: 4px;
+    border: solid 1.5px #292e33;
+    padding: 20px 28px 32px 28px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contendor-label label{
+    color: white;
+    font-size: 18px;
+}
+
+label.astros{
+    color: white;
+    font-size: 20px;
+}
+
+/* Estilo para etiquetas y elementos de entrada */
+label {
+    color: white;
+    padding: 10px;
+    display: block;
+    text-align: center;
+    font-size: 20px;
+}
+
+input[type="number"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+/* Estilo para los botones de radio y etiquetas asociadas */
+#astro-options {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}
+
+.astro-selector{
+    color: tomato;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Estilo para el botón de calcular */
+#calcular-button {
+    display: block;
+    width: 100%;
+    font-weight: 500;
+    padding: 18px;
+    background-color: white;
+    color: #13161C;
+    border: none;
+    border-radius: 4px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+/* Estilo para la sección de resultados */
+#resultado-section {
+    text-align: center;
+    color: #d4d4d4;
+    margin-top: 20px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo para enlaces */
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+/* Estilo para el enlace de reinicio (opcional) */
+#reset-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#degradado {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Evitar que el elemento interfiera con el cursor */
+    background: linear-gradient(to bottom right, #21282e, #13161C);
+    z-index: -1; /* Colocar detrás de otros elementos */
+}

@@ -1,4 +1,4 @@
-//Creacion de clase astro
+// creación de la clase Astro
 class Astro {
     constructor(nombre, gravedadRelativa) {
         this.nombre = nombre;
@@ -6,81 +6,76 @@ class Astro {
     }
 }
 
-//Instancias de Astro en un array
+// instancias de Astro en un array
 const astros = [
     new Astro("Luna", 1.622),
     new Astro("Marte", 3.711),
     new Astro("Sol", 274)
 ];
 
-//Funcion para calcular el peso del usuario en el astro
+// función para calcular el peso del usuario en el astro
 function calcularPesoEnAstro(astro, kilosUsuario) {
     return ((kilosUsuario / 9.8) * astro.gravedadRelativa).toFixed(2);
 }
 
-//Funcion para buscar un astro por nombre
-function buscarAstroPorNombre(nombre){
-    return astros.find(astro => astro.nombre.toLowerCase() === nombre.toLowerCase())
+// función para buscar un astro por nombre
+function buscarAstroPorNombre(nombre) {
+    return astros.find(astro => astro.nombre.toLowerCase() === nombre.toLowerCase());
 }
 
-alert("¡Bienvenido a PlanetGravity! 🚀\nSomos tu simulador de peso en otros mundos. ¿Preparado para saber cuanto pesarías en la Luna, Marte o en el Sol?")
-
-while(true){
-
-// Defino la variable que almacenará el peso de mi usuario
-let pesoUsuario = 0;
-let astroElegido;
-
-do {
-    pesoUsuario = Number(prompt("¡Genial! 🪐\nPrimero lo primero, ingresa tu peso en kg. Prometemos mantener tu información en secreto 🤫."));
+// función para manejar el cálculo y mostrar resultados
+function calcularYMostrarResultado() {
+    const pesoUsuario = parseFloat(document.getElementById("pesoUsuario").value);
+    const astroSeleccionado = document.querySelector('input[name="astro"]:checked');
+    const resultadoSection = document.getElementById("resultado-section");
 
     if (isNaN(pesoUsuario)) {
-        alert("Ese no es un peso válido. Inténtalo de nuevo 😪.");
+        resultadoSection.innerHTML = "Ingresa un peso válido en kg.";
+        return;
     }
-    
-} while (isNaN(pesoUsuario)); //Creo un bucle do...while para asegurarme de que mi usuario coloque un dato correcto.
 
-let mensajeResultado;
-let simulador;
+    if (!astroSeleccionado) {
+        resultadoSection.innerHTML = "Selecciona un astro.";
+        return;
+    }
 
-do{
+    const astroElegido = buscarAstroPorNombre(astroSeleccionado.value);
 
-    simulador = prompt(`Bien, ya tenemos tu peso 📝.
+    if (astroElegido) {
+        // Almacenar el peso del usuario en el almacenamiento local
+        localStorage.setItem("pesoUsuario", pesoUsuario);
 
-Ahora vamos a elegir el mundo:
-🔹Escribe Luna para calcular tu peso en la Luna
-🔹Escribe Marte para calcular tu peso en Marte
-🔹Escribe Sol para calcular tu peso en el Sol`);
+        const resultado = calcularPesoEnAstro(astroElegido, pesoUsuario);
 
-let astroElegido = buscarAstroPorNombre(simulador.toLocaleLowerCase());
-
-if(astroElegido){
-    mensajeResultado = `Haciendo calculos 🧮
-...
-...
-...
-
-La gravedad en ${astroElegido.nombre} es aproximadamente el ${astroElegido.gravedadRelativa}% de la gravedad de la Tierra. 
-Esto significa que si tu peso en la Tierra es de ${pesoUsuario} kg, tu peso en ${astroElegido.nombre} sería de aproximadamente ¡${calcularPesoEnAstro(astroElegido, pesoUsuario)} kg! Increíble, ¿verdad? 😮`;
-    alert(mensajeResultado);
-    break;
-}else{
-    alert("No encontramos un astro con ese nombre 🤔.\nIntenta de nuevo, por favor.");
+        resultadoSection.innerHTML = `<p id="parrafo-resultado">
+        ¡Tu peso en este astro sería de ${resultado} kg!</p>
+        <p>Esto es porque en ${astroElegido.nombre} la gravedad es ${astroElegido.gravedadRelativa}% de la gravedad de la Tierra. Increíble, ¿verdad? 😮</p>`;
+    } else {
+        resultadoSection.innerHTML = "No se encontró el astro seleccionado.";
+    }
 }
 
-} while(!astroElegido)
+// Obtener el peso del usuario almacenado en el almacenamiento local
+const pesoAlmacenado = localStorage.getItem("pesoUsuario");
 
-let volverACalcular = confirm("¿Quieres volver a calcular tu peso en otro mundo? 🚀")
-
-if(!volverACalcular){
-    alert(`Cerrando PlanetGravity 🚀
-...
-...             
-...
-
-See you later!`);
-    break;
-}
+if (pesoAlmacenado) {
+    document.getElementById("pesoUsuario").value = pesoAlmacenado;
 }
 
+// Asignación de la función de cálculo al botón "Calcular"
+const calcularButton = document.getElementById("calcular-button");
+calcularButton.addEventListener("click", calcularYMostrarResultado);
 
+const degradado = document.getElementById("degradado");
+
+// Degradado radial de fondo
+const radio = 120; // Tamaño del degradado
+
+// Escuchar el evento "mousemove" en el documento
+document.addEventListener("mousemove", (e) => {
+    const x = e.clientX / window.innerWidth;
+    const y = e.clientY / window.innerHeight;
+
+    // Actualizar el fondo de degradado
+    degradado.style.background = `radial-gradient(circle at ${x * 100}% ${y * 100}%, #21282e, #13161C ${radio}%)`;
+});

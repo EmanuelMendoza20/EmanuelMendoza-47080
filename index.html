@@ -3,11 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador interactivo</title>
+    <title>PlanetGravity</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="logo">
+        <img src="./img/planetgravity-logo.svg" alt="planetgravity-logo">
+    </div>
+    <!-- <h2>Bienvenido a PlanetGravity</h2> -->
+    <p class="subtexto">Somos tu simulador de peso en otros mundos. ¿Preparado para saber cuanto pesarías en la Luna, Marte o en el Sol?</p>
 
-    <script src="./script/script.js"></script>
+    <div id="input-section">
+        <div class="contendor-label">
+            <label for="pesoUsuario">Ingresa tu peso en kg:</label>
+            <input type="number" id="pesoUsuario">
+        </div>
+
+        <div class="contendor-label">
+            <label for="astroElegido">Selecciona un astro:</label>
+            <div id="astro-options">
+                <input type="radio" class="astro-selector" id="luna" name="astro" value="Luna">
+                <label class="astros" for="luna">Luna</label>
+
+                <input type="radio" class="astro-selector" id="marte" name="astro" value="Marte">
+                <label class="astros" for="marte">Marte</label>
+
+                <input type="radio" class="astro-selector" id="sol" name="astro" value="Sol">
+                <label class="astros" for="sol">Sol</label>
+            </div>
+        </div>
+        <button id="calcular-button">CALCULAR</button>
+    </div>
+
+    <div id="resultado-section">
+        <!-- Aquí se mostrarán los resultados -->
+    </div>
+
+    <div id="degradado"></div>
+
+    <script src="./script.js"></script>
 </body>
 </html>
