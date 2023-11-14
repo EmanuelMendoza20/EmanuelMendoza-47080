@@ -32,11 +32,13 @@ function calcularYMostrarResultado() {
     if (isNaN(pesoUsuario)) {
         Toastify({
 
-            text: "Selecciona un peso válido ⚖️",
+            text: "Selecciona un peso válido.",
             duration: 3000,
             style: {
                 background: 'rgb(203, 67, 53)'
-            }
+            },
+            gravity: "bottom", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
             
             }).showToast();
             return;
@@ -45,11 +47,13 @@ function calcularYMostrarResultado() {
     if (!astroSeleccionado) {
         Toastify({
 
-            text: "Selecciona un astro para continuar 🪐",
+            text: "Selecciona un astro para continuar.",
             duration: 1500,
             style: {
                 background: 'rgb(203, 67, 53)',
-            }
+            },
+            gravity: "bottom", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
             
             }).showToast();
             return;

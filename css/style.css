@@ -39,7 +39,7 @@ h2 {
 p {
     text-align: center;
     color: #767F87;
-    width: 396px;
+    width: 100%;
     font-size: 18px;
 }
 
@@ -79,7 +79,7 @@ p.subtexto{
     border: solid 1px #292e33;
     padding: 34px 28px 34px 28px;
     margin: 20px auto;
-    width: 80%;
+    width: 400px;
     max-width: 400px;
     display: flex;
     flex-direction: column;
@@ -87,13 +87,24 @@ p.subtexto{
 }
 
 .contendor-label label{
-    color: white;
+    color: #767F87;
     font-size: 16px;
 }
 
 label.astros{
     color: white;
     font-size: 18px;
+    cursor: pointer;
+    border-radius: 6px;
+    width: 200px;
+}
+
+label.astros:hover{
+    background-color: #683FEA;
+}
+
+input[type="radio"].astro-selector:checked + label.astros {
+    background-color: #683FEA;
 }
 
 /* Estilo para etiquetas y elementos de entrada */
@@ -130,7 +141,7 @@ input[type="number"]:hover{
 }
 
 .astro-selector{
-    color: tomato;
+    appearance: none;
 }
 
 input[type="radio"] {
@@ -138,7 +149,7 @@ input[type="radio"] {
 }
 
 /* Estilo para el botón de calcular */
-#calcular-button {
+/* #calcular-button {
     display: block;
     width: 100%;
     font-weight: 600;
@@ -154,18 +165,23 @@ input[type="radio"] {
 
 #calcular-button:hover{
     border: 1.5px solid #3c3c3f;
-}
+    box-shadow: -20px 22px 90px -17px rgba(255, 57, 152, 0.18), 47px -27px 90px -20px rgba(36, 255, 242, 0.18);
+} */
 
 /* Estilo para la sección de resultados */
 #resultado-section {
     text-align: center;
     color: #d4d4d4;
-    margin-top: 20px;
     font-size: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 400px;
+    color: #767F87;
+    background-color: #101012;
+    border-radius: 6px;
+    padding: 28px 28px 28px 28px;
 }
 
 /* Estilo para enlaces */
@@ -222,3 +238,90 @@ a {
     width: 100%;
     height: 100%;
 }
+
+
+
+
+/* Boton estilo calcular */
+#calcular-button {
+    height: 3.2rem;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background: #101012;
+    cursor: pointer;
+    transition: all 450ms ease-in-out;
+    font-weight: 600;
+    font-size: 16px;
+    color: #4c4c4d;
+    border: solid 1.5px #2e2e30;
+  }
+  
+  .sparkle {
+    fill: #AAAAAA;
+    transition: all 800ms ease;
+  }
+  
+  .text {
+    font-weight: 600;
+    color: #AAAAAA;
+    font-size: medium;
+  }
+  
+  #calcular-button:hover {
+    background: linear-gradient(0deg,#A47CF3,#683FEA);
+    box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+    inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+    0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+    0px 0px 180px 0px #9917FF;
+    transform: translateY(-2px);
+  }
+  
+  #calcular-button:hover .text {
+    color: white;
+  }
+  
+  #calcular-button:hover .sparkle {
+    fill: white;
+    transform: scale(1.2);
+  } 
+
+/* Prueba boton hover */
+
+.reinicio-button {
+    position: relative;
+    display: inline-block;
+    height: 3.2rem;
+    border: none;
+    font-size: 16px;
+    background-color: inherit;
+    border-radius: 6px;
+    font-weight: 600;
+    color: #AAAAAA;
+    border: solid 1.5px #2e2e30;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  .reinicio-button span:first-child {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .reinicio-button:hover {
+    color: #ffffff;
+    border: solid 1.5px #3e3e41;
+  }
+  
+  .reinicio-button:active {
+    scale: 0.95;
+  }
+  
+  .reinicio-button:hover span:last-child {
+    width: 350px;
+    height: 250px;
+    opacity: 1;
+  }
