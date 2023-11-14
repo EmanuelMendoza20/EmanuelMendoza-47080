@@ -30,13 +30,29 @@ function calcularYMostrarResultado() {
     const resultadoSection = document.getElementById("resultado-section");
 
     if (isNaN(pesoUsuario)) {
-        resultadoSection.innerHTML = "Ingresa un peso válido en kg.";
-        return;
+        Toastify({
+
+            text: "Selecciona un peso válido ⚖️",
+            duration: 3000,
+            style: {
+                background: 'rgb(240, 128, 128)'
+            }
+            
+            }).showToast();
+            return;
     }
 
     if (!astroSeleccionado) {
-        resultadoSection.innerHTML = "Selecciona un astro.";
-        return;
+        Toastify({
+
+            text: "Selecciona un astro para 🪐",
+            duration: 1500,
+            style: {
+                background: 'rgb(240, 128, 128)'
+            }
+            
+            }).showToast();
+            return;
     }
 
     const astroElegido = buscarAstroPorNombre(astroSeleccionado.value);
@@ -66,16 +82,17 @@ if (pesoAlmacenado) {
 const calcularButton = document.getElementById("calcular-button");
 calcularButton.addEventListener("click", calcularYMostrarResultado);
 
+
 const degradado = document.getElementById("degradado");
 
 // Degradado radial de fondo
-const radio = 120; // Tamaño del degradado
+const radio = 70; // Tamaño del degradado
 
 // Escuchar el evento "mousemove" en el documento
-document.addEventListener("mousemove", (e) => {
-    const x = e.clientX / window.innerWidth;
-    const y = e.clientY / window.innerHeight;
+// document.addEventListener("mousemove", (e) => {
+//     const x = e.clientX / window.innerWidth;
+//     const y = e.clientY / window.innerHeight;
 
-    // Actualizar el fondo de degradado
-    degradado.style.background = `radial-gradient(circle at ${x * 100}% ${y * 100}%, #21282e, #13161C ${radio}%)`;
-});
+//     // Actualizar el fondo de degradado
+//     degradado.style.background = `radial-gradient(circle at ${x * 100}% ${y * 100}%, #192936, #09090B ${radio}%)`;
+// });
