@@ -7,18 +7,17 @@
     box-sizing: border-box;
 }
 
+
 body {
     font-family: 'Space Grotesk', sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra verticalmente */
-    align-items: center; /* Centra horizontalmente */
-    min-height: 100vh; /* Toma el 100% de la altura de la ventana */
-    margin: 0;
-    padding: 0;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0; /* Eliminar los márgenes */
+    padding: 0; /* Eliminar el relleno */
     background: radial-gradient(circle at 50% 50%, #21282e, #13161C 70%);
-    background-size: cover, cover;
-    background-position: center, top;
 }
 
 .logo img{
@@ -40,7 +39,7 @@ h2 {
 p {
     text-align: center;
     color: #767F87;
-    width: 500px;
+    width: 396px;
     font-size: 18px;
 }
 
@@ -62,6 +61,15 @@ p.subtexto{
     justify-content: center;
     align-content: center;
     text-align: center;
+    border: #262628 solid 1px;
+}
+
+#pesoUsuario:hover{
+    border: #262628 solid 1px;
+}
+
+#pesoUsuario:active{
+    border: #262628 solid 1px;
 }
 
 /* Estilo para el contenedor de entrada */
@@ -102,9 +110,13 @@ input[type="number"] {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
-    border: none;
+    border: 1px solid #262628;
     border-radius: 6px;
     font-size: 18px;
+}
+
+input[type="number"]:hover{
+    border: 1.5px solid #262628;
 }
 
 /* Estilo para los botones de radio y etiquetas asociadas */
@@ -133,10 +145,15 @@ input[type="radio"] {
     padding: 14px;
     background-color: #101012;
     color: #ffffff;
-    border: 1px solid #212123;
+    border: 1.5px solid #212123;
     border-radius: 6px;
     font-size: 16px;
     cursor: pointer;
+    transition: .3s ease
+}
+
+#calcular-button:hover{
+    border: 1.5px solid #3c3c3f;
 }
 
 /* Estilo para la sección de resultados */
@@ -164,4 +181,44 @@ a {
     margin-top: 20px;
 }
 
+#sky {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    z-index: -1;
+}
 
+#shootingstars {
+    width: 100vh;
+    height: 100vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%) rotate(120deg);
+    overflow: hidden;
+    z-index: -1;
+}
+  
+  .wish {
+    height: 2px;
+    top: 300px;
+    width: 100px;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    background-color: white;
+    position: absolute;
+    background: linear-gradient(-45deg, white, rgba(0, 0, 255, 0));
+    filter: drop-shadow(0 0 6px white);
+    overflow: hidden;
+  }
+
+  #App {
+    width: 100%;
+    height: 100%;
+}
