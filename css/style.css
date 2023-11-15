@@ -25,7 +25,7 @@ body {
 }
 
 .logo img{
-    width: 380px;
+    width: 386px;
 }
 
 /* Estilo para el encabezado */
@@ -44,15 +44,15 @@ p{
     text-align: center;
     color: #767F87;
     width: 100%;
-    font-size: 18px;
+    font-size: 17px;
 }
 
 p.subtexto{
-    width: 435px;
+    width: 412px;
 }
 
 .parrafo-resultado{
-    font-size: 18px;
+    font-size: 17px;
 }
 
 #parrafo-resultado{
@@ -86,7 +86,7 @@ p.subtexto{
     border-radius: 8px;
     border: solid 1px #292e33;
     padding: 34px 28px 34px 28px;
-    margin: 20px auto;
+    margin-top: 28px;
     width: 400px;
     max-width: 400px;
     display: flex;
@@ -101,7 +101,7 @@ p.subtexto{
 
 label.astros{
     color: white;
-    font-size: 18px;
+    font-size: 17px;
     cursor: pointer;
     border-radius: 6px;
     width: 100%;
@@ -274,7 +274,7 @@ a {
     cursor: pointer;
     transition: all 450ms ease-in-out;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 15px;
     color: #4c4c4d;
     border: solid 1.5px #2e2e30;
   }
@@ -315,7 +315,7 @@ a {
     display: inline-block;
     height: 3.2rem;
     border: none;
-    font-size: 16px;
+    font-size: 15px;
     background-color: inherit;
     border-radius: 6px;
     font-weight: 600;
