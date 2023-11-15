@@ -13,6 +13,10 @@ const astros = [
     new Astro("Sol", 274)
 ];
 
+//Declaración variable resultado-section
+
+const resultadoSection = document.getElementById("resultado-section");
+
 // función para calcular el peso del usuario en el astro
 function calcularPesoEnAstro(astro, kilosUsuario) {
     return ((kilosUsuario / 9.8) * astro.gravedadRelativa).toFixed(2);
@@ -27,12 +31,12 @@ function buscarAstroPorNombre(nombre) {
 function calcularYMostrarResultado() {
     const pesoUsuario = parseFloat(document.getElementById("pesoUsuario").value);
     const astroSeleccionado = document.querySelector('input[name="astro"]:checked');
-    const resultadoSection = document.getElementById("resultado-section");
+    
 
     if (isNaN(pesoUsuario)) {
         Toastify({
 
-            text: "Selecciona un peso válido.",
+            text: "Ingresa un peso válido.",
             duration: 3000,
             style: {
                 background: 'rgb(203, 67, 53)'
@@ -47,7 +51,7 @@ function calcularYMostrarResultado() {
     if (!astroSeleccionado) {
         Toastify({
 
-            text: "Selecciona un astro para continuar.",
+            text: "Selecciona un astro.",
             duration: 1500,
             style: {
                 background: 'rgb(203, 67, 53)',
@@ -222,3 +226,28 @@ document.addEventListener("DOMContentLoaded", function () {
     starryNight();
     shootingStars();
 });
+
+
+//Peso y seleccion de astros
+
+const pesoUsuarioInput = document.getElementById("pesoUsuario")
+const astroOptions = document.querySelectorAll('input[name="astro"]');
+
+//Función para reiniciar valores
+function reiniciarValores(){
+    //Vaciar el campo de peso
+    pesoUsuarioInput.value = "";
+
+    //Desmarca la seleccion de astros
+    astroOptions.forEach(option =>{
+        option.checked = false;
+    })
+
+    //Borrar el texto de los resultados
+    resultadoSection.innerHTML = `<p class="parrafo-resultado">Ingresa tu peso y selecciona un astro...</p>`;
+}
+
+//Asigna la funcion al evento de click del botón reiniciar
+
+const reiniciarButton = document.getElementById("reiniciar-button");
+reiniciarButton.addEventListener("click", reiniciarValores);

@@ -15,16 +15,22 @@
     />
     <!-- Stars anime -->
     <script src="./script/anime.min.js"></script>
+    <!-- CSS Animate -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
 </head>
 <body>
-    <div class="logo">
+    <div id="contenedor-logo" class="logo animate__animated animate__fadeIn animate__delay-1s">
         <img src="./img/planetgravity-logo.svg" alt="planetgravity-logo">
     </div>
     <!-- <h2>Bienvenido a PlanetGravity</h2> -->
-    <p class="subtexto">Somos tu simulador de peso en otros mundos. ¿Preparado para saber cuanto pesarías en la Luna, Marte o en el Sol?</p>
+    <div class="animate__animated animate__fadeIn animate__delay-1s">
+        <p class="subtexto">Somos tu simulador de peso en otros mundos. ¿Preparado para saber cuanto pesarías en la Luna, Marte o en el Sol?</p>
+    </div>
 
-    <div id="input-section">
+    <div id="input-section" class="animate__animated animate__fadeInDown">
         <div class="contendor-label">
             <label for="pesoUsuario">Ingresa tu peso en kg:</label>
             <input type="number" id="pesoUsuario">
@@ -43,20 +49,21 @@
                 <label class="astros" for="sol">Sol</label>
             </div>
         </div>
+
+        <div id="resultado-section">
+            <p class="parrafo-resultado">Ingresa tu peso y selecciona un astro...</p>
+            <!-- Aquí se mostrarán los resultados -->
+        </div>
+
         <button id="calcular-button">
             <span class="text">Calcular</span>
         </button>
-        <button class="reinicio-button">
+        <button id="reiniciar-button" class="reinicio-button">
             <span>Reiniciar</span>
         </button>
     </div>
 
-    <div id="resultado-section">
-        <p>Esperando tus datos...</p>
-        <!-- Aquí se mostrarán los resultados -->
-    </div>
-
-
+    <!-- <div id="boton-prueba" class="animate__animated animate__fadeInDown">Prueba</div> -->
 
 
     <!-- Stars anime -->

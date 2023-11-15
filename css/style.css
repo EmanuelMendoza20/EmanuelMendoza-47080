@@ -2,7 +2,7 @@
 
 /* Importando fuente */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-
+@import 'animate.css';
 *{
     box-sizing: border-box;
 }
@@ -18,6 +18,10 @@ body {
     margin: 0; /* Eliminar los márgenes */
     padding: 0; /* Eliminar el relleno */
     background: radial-gradient(circle at 50% 50%, #21282e, #13161C 70%);
+}
+
+#contenedor-logo{
+    padding-top: 28px;
 }
 
 .logo img{
@@ -36,7 +40,7 @@ h2 {
 }
 
 /* Estilo para el párrafo de bienvenida */
-p {
+p{
     text-align: center;
     color: #767F87;
     width: 100%;
@@ -45,6 +49,10 @@ p {
 
 p.subtexto{
     width: 435px;
+}
+
+.parrafo-resultado{
+    font-size: 18px;
 }
 
 #parrafo-resultado{
@@ -96,15 +104,16 @@ label.astros{
     font-size: 18px;
     cursor: pointer;
     border-radius: 6px;
-    width: 200px;
+    width: 100%;
+    padding: 12px;
 }
 
 label.astros:hover{
-    background-color: #683FEA;
+    background-color: #21242D;
 }
 
 input[type="radio"].astro-selector:checked + label.astros {
-    background-color: #683FEA;
+    background-color: #21242D;
 }
 
 /* Estilo para etiquetas y elementos de entrada */
@@ -124,28 +133,39 @@ input[type="number"] {
     border: 1px solid #262628;
     border-radius: 6px;
     font-size: 18px;
+    border: 1px solid #262628;
+    box-shadow: none;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    outline: none;
 }
 
 input[type="number"]:hover{
     border: 1.5px solid #262628;
 }
 
+input[type="number"]:active{
+    border: 1px solid #262628;
+    box-shadow: none;
+}
+
 /* Estilo para los botones de radio y etiquetas asociadas */
 #astro-options {
-    margin-top: 0px;
-    margin-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2px;
-}
-
-.astro-selector{
+    gap: 8px;
+    appearance: textfield;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
+    outline: none;
 }
 
 input[type="radio"] {
-    margin-right: 5px;
+    display: none;
 }
 
 /* Estilo para el botón de calcular */
@@ -177,11 +197,11 @@ input[type="radio"] {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 400px;
+    width: 100%;
     color: #767F87;
     background-color: #101012;
     border-radius: 6px;
-    padding: 28px 28px 28px 28px;
+    padding: 18px 28px 18px 28px;
 }
 
 /* Estilo para enlaces */
@@ -324,4 +344,10 @@ a {
     width: 350px;
     height: 250px;
     opacity: 1;
+  }
+
+  #boton-prueba{
+    background-color: white;
+    color: black;
+    padding: 20px;
   }
