@@ -1,4 +1,4 @@
-// creación de la clase Astro
+// Creación de la clase Astro
 class Astro {
     constructor(nombre, gravedadRelativa) {
         this.nombre = nombre;
@@ -6,61 +6,39 @@ class Astro {
     }
 }
 
-// instancias de Astro en un array
+// Instancias de Astro en un array
 const astros = [
     new Astro("Luna", 1.622),
     new Astro("Marte", 3.711),
     new Astro("Sol", 274)
 ];
 
-//Declaración variable resultado-section
-
+// Declaración variable resultado-section
 const resultadoSection = document.getElementById("resultado-section");
 
-// función para calcular el peso del usuario en el astro
+// Función para calcular el peso del usuario en el astro
 function calcularPesoEnAstro(astro, kilosUsuario) {
     return ((kilosUsuario / 9.8) * astro.gravedadRelativa).toFixed(2);
 }
 
-// función para buscar un astro por nombre
+// Función para buscar un astro por nombre
 function buscarAstroPorNombre(nombre) {
     return astros.find(astro => astro.nombre.toLowerCase() === nombre.toLowerCase());
 }
 
-// función para manejar el cálculo y mostrar resultados
+// Función para manejar el cálculo y mostrar resultados
 function calcularYMostrarResultado() {
     const pesoUsuario = parseFloat(document.getElementById("pesoUsuario").value);
     const astroSeleccionado = document.querySelector('input[name="astro"]:checked');
-    
 
     if (isNaN(pesoUsuario)) {
-        Toastify({
-
-            text: "Ingresa un peso válido.",
-            duration: 3000,
-            style: {
-                background: 'rgb(203, 67, 53)'
-            },
-            gravity: "bottom", // `top` or `bottom`
-            position: "center", // `left`, `center` or `right`
-            
-            }).showToast();
-            return;
+        mostrarError("Ingresa un peso válido.");
+        return;
     }
 
     if (!astroSeleccionado) {
-        Toastify({
-
-            text: "Selecciona un astro.",
-            duration: 1500,
-            style: {
-                background: 'rgb(203, 67, 53)',
-            },
-            gravity: "bottom", // `top` or `bottom`
-            position: "center", // `left`, `center` or `right`
-            
-            }).showToast();
-            return;
+        mostrarError("Selecciona un astro.");
+        return;
     }
 
     const astroElegido = buscarAstroPorNombre(astroSeleccionado.value);
@@ -71,12 +49,34 @@ function calcularYMostrarResultado() {
 
         const resultado = calcularPesoEnAstro(astroElegido, pesoUsuario);
 
-        resultadoSection.innerHTML = `<p id="parrafo-resultado">
-        ¡Tu peso en este astro sería de ${resultado} kg!</p>
-        <p>Esto es porque en ${astroElegido.nombre} la gravedad es ${astroElegido.gravedadRelativa}% de la gravedad de la Tierra. Increíble, ¿verdad? 😮</p>`;
+        mostrarResultado(
+            `¡Tu peso en ${astroElegido.nombre} sería de ${resultado} kg!`,
+            `Esto es porque en ${astroElegido.nombre} la gravedad es ${astroElegido.gravedadRelativa}% de la gravedad de la Tierra. ¡Increíble, verdad? 😮`
+        );
+
+        // Agregar la información también al historial
+        agregarAlHistorial(astroElegido.nombre, pesoUsuario, resultado);
     } else {
-        resultadoSection.innerHTML = "No se encontró el astro seleccionado.";
+        mostrarError("No se encontró el astro seleccionado.");
     }
+}
+
+// Función para mostrar un mensaje de error
+function mostrarError(mensaje) {
+    Toastify({
+        text: mensaje,
+        duration: 3000,
+        style: {
+            background: '#AC2828'
+        },
+        gravity: "bottom",
+        position: "center"
+    }).showToast();
+}
+
+// Función para mostrar resultados
+function mostrarResultado(parrafo1, parrafo2) {
+    resultadoSection.innerHTML = `<p id="parrafo-resultado">${parrafo1}</p><p>${parrafo2}</p>`;
 }
 
 // Obtener el peso del usuario almacenado en el almacenamiento local
@@ -90,7 +90,155 @@ if (pesoAlmacenado) {
 const calcularButton = document.getElementById("calcular-button");
 calcularButton.addEventListener("click", calcularYMostrarResultado);
 
-// Stars anime
+// Posibilidad de iniciar cálculo al presionar "Enter"
+const pesoUsuarioInputEnter = document.getElementById("pesoUsuario");
+
+// Función para manejar el evento de tecla
+function handleKeyPress(event) {
+    // Verificamos si la tecla presionada es enter
+    if (event.key === "Enter") {
+        // Llamamos a la función para calcular y mostrar el resultado
+        calcularYMostrarResultado();
+    }
+}
+
+// Agregamos un evento de tecla al campo de entrada
+pesoUsuarioInputEnter.addEventListener("keypress", handleKeyPress);
+
+// Historial
+// Obtención de historial al cargar la página
+document.addEventListener("DOMContentLoaded", function () {
+    const historialGuardado = localStorage.getItem("historial");
+    if (historialGuardado) {
+        // Se parsea el historial guardado en formato JSON
+        const historialParseado = JSON.parse(historialGuardado);
+
+        // Iteramos sobre el historial y agregamos cada elemento
+        historialParseado.forEach(item => {
+            agregarAlHistorial(item.astroNombre, item.pesoUsuario, item.resultado);
+        });
+    }
+});
+
+// Agregar historial
+const historialGrupo = document.getElementById("historial-grupo");
+
+function agregarAlHistorial(astroNombre, pesoUsuario, resultado) {
+    // Obtenemos el contenedor del historial
+    const contenedorHistorial = document.getElementById("historial-grupo");
+
+    // Crea un nuevo párrafo para el historial
+    const nuevoParrafoHistorial = document.createElement("p");
+
+    // Asignamos una clase al nuevo párrafo
+    nuevoParrafoHistorial.classList.add("historial");
+
+    // Configuramos el contenido del nuevo párrafo
+    nuevoParrafoHistorial.innerHTML = `En <span class="resaltado-historial">${astroNombre}</span>, pesando <span class="resaltado-historial">${pesoUsuario} kg</span>, tu peso sería de <span class="resaltado-historial">${resultado} kg</span>`;
+
+    // Agregar el nuevo párrafo al contenedor
+    contenedorHistorial.appendChild(nuevoParrafoHistorial);
+
+    // Agrega el nuevo párrafo al contenedor
+    historialGrupo.appendChild(nuevoParrafoHistorial);
+
+    // Guardar historial en localStorage
+    actualizarLocalStorage();
+}
+
+// Función para limpiar el historial y el localStorage
+function limpiarHistorial() {
+    while (historialGrupo.firstChild) {
+        historialGrupo.removeChild(historialGrupo.firstChild);
+    }
+    localStorage.removeItem("historial"); // Eliminamos el historial del localStorage
+
+    // Volver a cargar el historial después de limpiarlo
+    const historialGuardado = localStorage.getItem("historial");
+    if (historialGuardado) {
+        // Se parsea el historial guardado en formato JSON
+        const historialParseado = JSON.parse(historialGuardado);
+
+        // Iteramos sobre el historial y agregamos cada elemento
+        historialParseado.forEach(item => {
+            agregarAlHistorial(item.astroNombre, item.pesoUsuario, item.resultado);
+        });
+    }
+    Toastify({
+        text: 'Historial borrado.',
+        duration: 3000,
+        style: {
+            background: '#114851'
+        },
+        gravity: "bottom",
+        position: "center"
+    }).showToast();
+}
+
+// Peso y selección de astros
+const pesoUsuarioInput = document.getElementById("pesoUsuario");
+const astroOptions = document.querySelectorAll('input[name="astro"]');
+
+// Función para reiniciar valores
+function reiniciarValores() {
+    // Vaciar el campo de peso
+    pesoUsuarioInput.value = "";
+
+    // Desmarcar la selección de astros
+    astroOptions.forEach(option => {
+        option.checked = false;
+    });
+
+    // Borrar el texto de los resultados
+    resultadoSection.innerHTML = `<p class="parrafo-resultado">Ingresa tu peso y selecciona un astro...</p>`;
+    Toastify({
+        text: "Reiniciaste los valores.",
+        duration: 3000,
+        style: {
+            background: '#114851'
+        },
+        gravity: "bottom",
+        position: "center",
+    }).showToast();
+}
+
+// Asigna la función al evento de click del botón reiniciar
+const reiniciarButton = document.getElementById("reiniciar-button");
+reiniciarButton.addEventListener("click", reiniciarValores);
+
+// Creación botón borrar historial
+// Obtenemos una referencia al botón de limpiar
+const botonBorrarHistorial = document.getElementById("boton-borrar-historial");
+
+// Agrega un evento de click al botón
+botonBorrarHistorial.addEventListener("click", limpiarHistorial);
+
+// Función para actualizar el localStorage
+function actualizarLocalStorage() {
+    // Obtener todos los párrafos actuales en el historial
+    const parrafosHistorial = Array.from(historialGrupo.children);
+
+    // Crear un array para almacenar los datos del historial
+    const historialDatos = parrafosHistorial.map(parrafo => {
+        // Obtener los elementos resaltados dentro del párrafo
+        const elementosResaltados = Array.from(parrafo.querySelectorAll('.resaltado-historial'));
+
+        if (elementosResaltados.length === 3) {
+            return {
+                astroNombre: elementosResaltados[0].textContent.trim(),
+                pesoUsuario: elementosResaltados[1].textContent.trim().replace(' kg', ''),
+                resultado: elementosResaltados[2].textContent.trim().replace(' kg', '')
+            };
+        }
+
+        return null; // Manejar casos donde el formato no coincide
+    }).filter(Boolean); // Filtrar elementos nulos
+
+    // Convertir el array de datos a JSON y guardarlo en localStorage
+    localStorage.setItem("historial", JSON.stringify(historialDatos));
+}
+
+// STARS ANIME
 // Twinkling Night Sky by Sharna
 
 // Función para generar un número aleatorio entre dos valores
@@ -228,26 +376,4 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-//Peso y seleccion de astros
-
-const pesoUsuarioInput = document.getElementById("pesoUsuario")
-const astroOptions = document.querySelectorAll('input[name="astro"]');
-
-//Función para reiniciar valores
-function reiniciarValores(){
-    //Vaciar el campo de peso
-    pesoUsuarioInput.value = "";
-
-    //Desmarca la seleccion de astros
-    astroOptions.forEach(option =>{
-        option.checked = false;
-    })
-
-    //Borrar el texto de los resultados
-    resultadoSection.innerHTML = `<p class="parrafo-resultado">Ingresa tu peso y selecciona un astro...</p>`;
-}
-
-//Asigna la funcion al evento de click del botón reiniciar
-
-const reiniciarButton = document.getElementById("reiniciar-button");
-reiniciarButton.addEventListener("click", reiniciarValores);
+//FIN DE STARS ANIME

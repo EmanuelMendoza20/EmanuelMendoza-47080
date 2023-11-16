@@ -47,8 +47,116 @@ p{
     font-size: 17px;
 }
 
+/* Logo y subtitulo */
+
+#contenedor-logo-subtitulo{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* Contenedor aplicacion */
+
+#contenedor-aplicacion{
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    height: auto;
+}
+
+.titulo-modulo{
+    color: #767F87;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 10px;
+    text-align: center;
+}
+
+#contenedor-historial{
+    background-color: #101012;
+    border-radius: 8px;
+    border: solid 1px #292e33;
+    padding: 28px 28px 34px 28px;
+    width: 365px;
+    margin-top: 28px;
+    height: auto;
+    max-height: 628px;
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.resaltado-historial{
+    font-weight: 700;
+}
+
+#boton-borrar-historial{
+    height: 3.2rem;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background: #101012;
+    cursor: pointer;
+    transition: all 450ms ease-in-out;
+    font-weight: 600;
+    font-size: 15px;
+    color: #AAAAAA;
+    border: solid 1.5px #2e2e30;
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 0px;
+}
+
+#boton-borrar-historial:hover{
+    color: #ffffff;
+    border: solid 1.5px #3e3e41;
+    box-shadow:
+    0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+    0px 0px 180px 0px #101012;
+}
+
 p.subtexto{
-    width: 412px;
+    width: 573px;
+}
+
+.historial{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding:5px;
+    text-align: center;
+}
+
+#historial-grupo{
+    background-color: #21242D;
+    border-radius: 6px;
+    height: 80%;
+    max-height: 80%;
+    width: 100%;
+    overflow-y: scroll;
+    position: relative;
+    scrollbar-color: #767F87 #0000bb;
+    scrollbar-width: thin;
+    padding: 6px;
+}
+
+#historial-grupo::-webkit-scrollbar {
+    width: 8px;
+}
+
+#historial-grupo::-webkit-scrollbar-thumb {
+    background-color: #767F87;
+    border-radius: 8px;
+}
+
+#historial-grupo::-webkit-scrollbar-track {
+    background-color: #21242D;
 }
 
 .parrafo-resultado{
@@ -56,7 +164,8 @@ p.subtexto{
 }
 
 #parrafo-resultado{
-    font-weight: 600;
+    font-weight: 6
+00;
     padding-bottom: 0px;
     margin: 0px;
 }
@@ -85,13 +194,13 @@ p.subtexto{
     background-color: #101012;
     border-radius: 8px;
     border: solid 1px #292e33;
-    padding: 34px 28px 34px 28px;
+    padding: 28px 28px 34px 28px;
     margin-top: 28px;
     width: 400px;
     max-width: 400px;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 27px;
 }
 
 .contendor-label label{
@@ -345,6 +454,9 @@ a {
   .reinicio-button:hover {
     color: #ffffff;
     border: solid 1.5px #3e3e41;
+    box-shadow:
+    0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+    0px 0px 180px 0px #101012;
   }
   
   .reinicio-button:active {

@@ -22,54 +22,73 @@
     
 </head>
 <body>
-    <div id="contenedor-logo" class="logo animate__animated animate__fadeIn animate__delay-1s">
-        <img src="./img/planetgravity-logo.svg" alt="planetgravity-logo">
-    </div>
-    <!-- <h2>Bienvenido a PlanetGravity</h2> -->
-    <div class="animate__animated animate__fadeIn animate__delay-1s">
-        <p class="subtexto">Somos tu simulador de peso en otros mundos. ¿Preparado para saber cuanto pesarías en la Luna, Marte o en el Sol?</p>
-    </div>
 
-    <div id="input-section" class="animate__animated animate__fadeInDown">
-        <div class="contendor-label">
-            <label for="pesoUsuario">Ingresa tu peso en kg:</label>
-            <input type="number" id="pesoUsuario">
-        </div>
+    <div id="bloque-contenedor-padre">
 
-        <div class="contendor-label">
-            <label for="astroElegido">Selecciona un astro:</label>
-            <div id="astro-options">
-                <input type="radio" class="astro-selector" id="luna" name="astro" value="Luna">
-                <label class="astros" for="luna">Luna</label>
-
-                <input type="radio" class="astro-selector" id="marte" name="astro" value="Marte">
-                <label class="astros" for="marte">Marte</label>
-
-                <input type="radio" class="astro-selector" id="sol" name="astro" value="Sol">
-                <label class="astros" for="sol">Sol</label>
+        <div id="contenedor-logo-subtitulo">
+            <div id="contenedor-logo" class="logo animate__animated animate__fadeIn animate__delay-1s">
+                <img src="./img/planetgravity-logo.svg" alt="planetgravity-logo">
+            </div>
+            <!-- <h2>Bienvenido a PlanetGravity</h2> -->
+            <div class="animate__animated animate__fadeIn animate__delay-1s">
+                <p class="subtexto">Somos tu simulador de peso en otros mundos. ¿Preparado para saber cuanto pesarías en la Luna, Marte o en el Sol?</p>
             </div>
         </div>
 
-        <div id="resultado-section">
-            <p class="parrafo-resultado">Ingresa tu peso y selecciona un astro...</p>
-            <!-- Aquí se mostrarán los resultados -->
+        <div id="contenedor-aplicacion">
+
+            <div id="input-section" class="animate__animated animate__fadeInDown">
+                <div class="contendor-label">
+                    <label for="pesoUsuario">Ingresa tu peso en kg:</label>
+                    <input type="number" id="pesoUsuario">
+                </div>
+
+                <div class="contendor-label">
+                    <label for="astroElegido">Selecciona un astro:</label>
+                    <div id="astro-options">
+                        <input type="radio" class="astro-selector" id="luna" name="astro" value="Luna">
+                        <label class="astros" for="luna">Luna</label>
+
+                        <input type="radio" class="astro-selector" id="marte" name="astro" value="Marte">
+                        <label class="astros" for="marte">Marte</label>
+
+                        <input type="radio" class="astro-selector" id="sol" name="astro" value="Sol">
+                        <label class="astros" for="sol">Sol</label>
+                    </div>
+                </div>
+
+                <div id="resultado-section">
+                    <p class="parrafo-resultado">Ingresa tu peso y selecciona un astro...</p>
+                    <!-- Aquí se mostrarán los resultados -->
+                </div>
+
+                <div id="contenedor-botones">
+
+                    <button id="calcular-button">
+                        <span class="text">Calcular</span>
+                    </button>
+                    <button id="reiniciar-button" class="reinicio-button">
+                        <span>Reiniciar</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div id="contenedor-historial" class="animate__animated animate__fadeInRight">
+                <div id="titulo-historial">
+                    <h3 class="titulo-modulo">Historial de calculos</h3>
+                </div>
+                <div id="historial-grupo">
+                </div>
+                <button id="boton-borrar-historial">Limpiar</button>
+            </div>
+
         </div>
 
-        <div id="contenedor-botones">
 
-            <button id="calcular-button">
-                <span class="text">Calcular</span>
-            </button>
-            <button id="reiniciar-button" class="reinicio-button">
-                <span>Reiniciar</span>
-            </button>
-
-        </div>
 
     </div>
-
-    <!-- <div id="boton-prueba" class="animate__animated animate__fadeInDown">Prueba</div> -->
-
 
     <!-- Stars anime -->
     <div id="App"></div>
