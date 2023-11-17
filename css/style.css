@@ -2,11 +2,15 @@
 
 /* Importando fuente */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* Importando animate.css */
 @import 'animate.css';
+
 *{
     box-sizing: border-box;
 }
 
+/* Estilo cuerpo */
 
 body {
     font-family: 'Space Grotesk', sans-serif;
@@ -15,20 +19,25 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin: 0; /* Eliminar los márgenes */
-    padding: 0; /* Eliminar el relleno */
+    margin: 0; 
+    padding: 0; 
     background: radial-gradient(circle at 50% 50%, #21282e, #13161C 70%);
 }
+
+/* Contenedor logo */
 
 #contenedor-logo{
     padding-top: 28px;
 }
+
+/* Tamaño imagen logo */
 
 .logo img{
     width: 386px;
 }
 
 /* Estilo para el encabezado */
+
 h2 {
     text-align: center;
     color: white;
@@ -40,6 +49,7 @@ h2 {
 }
 
 /* Estilo para el párrafo de bienvenida */
+
 p{
     text-align: center;
     color: #767F87;
@@ -276,26 +286,6 @@ input[type="number"]:active{
 input[type="radio"] {
     display: none;
 }
-
-/* Estilo para el botón de calcular */
-/* #calcular-button {
-    display: block;
-    width: 100%;
-    font-weight: 600;
-    padding: 14px;
-    background-color: #101012;
-    color: #ffffff;
-    border: 1.5px solid #212123;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: .3s ease
-}
-
-#calcular-button:hover{
-    border: 1.5px solid #3c3c3f;
-    box-shadow: -20px 22px 90px -17px rgba(255, 57, 152, 0.18), 47px -27px 90px -20px rgba(36, 255, 242, 0.18);
-} */
 
 /* Estilo para la sección de resultados */
 #resultado-section {

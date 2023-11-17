@@ -61,7 +61,7 @@ function calcularYMostrarResultado() {
     }
 }
 
-// Función para mostrar un mensaje de error
+// Función para mostrar un mensaje de error usando Toastify
 function mostrarError(mensaje) {
     Toastify({
         text: mensaje,
@@ -241,46 +241,29 @@ function actualizarLocalStorage() {
 // STARS ANIME
 // Twinkling Night Sky by Sharna
 
-// Función para generar un número aleatorio entre dos valores
 function random(min, max) {
     return Math.random() * (max - min) + min;
   }
   
-  // Función para crear las estrellas fijas y agregarlas al elemento SVG
   function createStars(num) {
-    // Obtener el elemento SVG con id="sky"
     var sky = document.getElementById("sky");
-    // Obtener el ancho y el alto del elemento SVG
     var vw = window.innerWidth;
     var vh = window.innerHeight;
-    // Crear un bucle para generar las estrellas
     for (var i = 0; i < num; i++) {
-      // Crear un elemento círculo
       var star = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      // Asignar un radio aleatorio entre 0.6 y 1.3
       star.setAttribute("r", random(0.6, 1.3));
-      // Asignar una posición x aleatoria entre 0 y el ancho del elemento SVG
       star.setAttribute("cx", random(0, vw));
-      // Asignar una posición y aleatoria entre 0 y el alto del elemento SVG
       star.setAttribute("cy", random(0, vh));
-      // Asignar un color blanco al círculo
       star.setAttribute("fill", "white");
-      // Asignar una clase "star" al círculo
       star.setAttribute("class", "star");
-      // Agregar el círculo al elemento SVG
       sky.appendChild(star);
     }
   }
   
-  // Función para animar las estrellas fijas con la biblioteca anime.js
   function animateStars() {
-    // Obtener todos los elementos con clase "star"
     var stars = document.getElementsByClassName("star");
-    // Crear una animación con la función anime()
     anime({
-      // Asignar los elementos con clase "star" como objetivos de la animación
       targets: stars,
-      // Asignar una propiedad de opacidad que cambie de 0 a 1 y viceversa
       opacity: [
         {
           duration: 700,
@@ -291,26 +274,19 @@ function random(min, max) {
           value: "1"
         }
       ],
-      // Asignar un tipo de transición lineal
       easing: "linear",
-      // Asignar un bucle infinito
       loop: true,
-      // Asignar un retraso aleatorio para cada elemento
       delay: function (el, i) {
         return random(0, 50) * i;
       }
     });
   }
   
-  // Función para ejecutar las funciones anteriores cuando se carga la página
   function init() {
-    // Crear 60 estrellas fijas
     createStars(60);
-    // Animar las estrellas fijas
     animateStars();
   }
   
-  // Ejecutar la función init() cuando se carga la página
   window.onload = init;
   
 
